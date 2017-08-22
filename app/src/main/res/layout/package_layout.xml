@@ -13,6 +13,14 @@
         tools:text="Status"
         android:id="@+id/status" />
 
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="BNA"
+        tools:text="BNA"
+        android:id="@+id/bna" />
+
     <include
         android:id="@+id/articleLayout"
         layout="@layout/article_layout"/>
