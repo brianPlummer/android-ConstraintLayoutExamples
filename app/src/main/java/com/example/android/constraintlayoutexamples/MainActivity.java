@@ -18,6 +18,8 @@ package com.example.android.constraintlayoutexamples;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.support.constraint.ConstraintSet;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -27,10 +29,29 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.example_main);
+
+        ConstraintSet articleSet = new ConstraintSet();
+        articleSet.load(this, R.layout.article_constraints);
+
+        ConstraintLayout articleLayout = (ConstraintLayout) findViewById(R.id.articleLayout);
+        articleSet.applyTo(articleLayout);
+
+
+
+
+
+        ConstraintSet packageSet = new ConstraintSet();
+        packageSet.load(this, R.layout.package_constraints);
+        ConstraintLayout packageLayout = (ConstraintLayout) findViewById(R.id.packageLayout);
+        ConstraintLayout articleInPackage = (ConstraintLayout) packageLayout.findViewById(R.id.articleLayout);
+
+        articleSet.applyTo(articleInPackage);
+        packageSet.applyTo(packageLayout);
+
     }
 
-    public void show(View v) {
+    /*public void show(View v) {
         String tag = (String) v.getTag();
         int id = getResources().getIdentifier(tag, "layout", getPackageName());
         setContentView(id);
@@ -49,5 +70,5 @@ public class MainActivity extends AppCompatActivity {
 
     public void showConstraintSetExample(View view) {
         startActivity(new Intent(this, ConstraintSetExampleActivity.class));
-    }
+    }*/
 }
